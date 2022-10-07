@@ -1,2 +1,2 @@
-import Checkout from './CheckOut';
+import Checkout from './Checkout';
 export default Checkout;
