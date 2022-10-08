@@ -4,7 +4,7 @@ import { useCartContext } from '../../context/CartContext';
 const ProductSelect: React.FC = () => {
   const [productData, setProductData] = useState<Product[]>([]);
 
-  const { setSelectedProduct } = useCartContext();
+  const { setSelectedProduct, setSelectedMaxAmount } = useCartContext();
 
   useEffect(() => {
     fetch('../../../data/products.json')
@@ -17,6 +17,7 @@ const ProductSelect: React.FC = () => {
       (product) => product.id === productId
     );
     setSelectedProduct(productSelected!);
+    setSelectedMaxAmount(productSelected!.maxAmount);
   };
 
   return (

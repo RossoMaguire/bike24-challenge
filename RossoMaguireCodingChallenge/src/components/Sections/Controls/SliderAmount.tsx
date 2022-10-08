@@ -14,7 +14,8 @@ import {
 import { useCartContext } from '../../context/CartContext';
 
 const SliderAmount: React.FC = () => {
-  const { setSelectedAmount, selectedAmount } = useCartContext();
+  const { setSelectedAmount, selectedAmount, selectedMaxAmount } =
+    useCartContext();
 
   const handleChange = (amount: any) => setSelectedAmount(amount);
 
@@ -25,6 +26,7 @@ const SliderAmount: React.FC = () => {
         focusThumbOnChange={false}
         value={selectedAmount}
         onChange={handleChange}
+        max={selectedMaxAmount}
       >
         <SliderTrack>
           <SliderFilledTrack />

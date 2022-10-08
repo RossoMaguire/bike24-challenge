@@ -5,6 +5,8 @@ const cartDefaultValues: ICartContext = {
   setSelectedProduct: () => {},
   selectedAmount: 0,
   setSelectedAmount: () => {},
+  selectedMaxAmount: 0,
+  setSelectedMaxAmount: () => {},
   cartTotal: 0,
   setCartTotal: () => {},
   cartItems: [],
@@ -25,6 +27,7 @@ export function CartProvider({ children }: ICartContextProps) {
     {} as Product
   );
   const [selectedAmount, setSelectedAmount] = useState<number>(0);
+  const [selectedMaxAmount, setSelectedMaxAmount] = useState<number>(0);
   const [cartTotal, setCartTotal] = useState<number>(0);
   const [cartItems, setCartItems] = useState<CartItem[]>([] as CartItem[]);
   const [cartCount, setCartCount] = useState<number>(0);
@@ -62,6 +65,8 @@ export function CartProvider({ children }: ICartContextProps) {
     setSelectedProduct,
     selectedAmount,
     setSelectedAmount,
+    selectedMaxAmount,
+    setSelectedMaxAmount,
     cartTotal,
     setCartTotal,
     cartItems,
