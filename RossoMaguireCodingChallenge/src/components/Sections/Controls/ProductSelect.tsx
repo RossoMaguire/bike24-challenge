@@ -11,7 +11,7 @@ const ProductSelect: React.FC = () => {
   }, []);
 
   return (
-    <Select placeholder='Select a Product'>
+    <Select placeholder='Select a Product' color='black'>
       {productData.map((product, index) => (
         <option key={product.id} value={`product-${index}`}>
           {`${product.productName} || €${product.price.toString()}`}
