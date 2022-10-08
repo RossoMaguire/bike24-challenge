@@ -18,6 +18,10 @@ interface ICartContext {
   setSelectedProduct: React.Dispatch<React.SetStateAction<Product>>;
   selectedAmount: number;
   setSelectedAmount: React.Dispatch<React.SetStateAction<number>>;
+  selectedMaxAmount: number;
+  setSelectedMaxAmount: React.Dispatch<React.SetStateAction<number>>;
+  selectedTotalPrice: number;
+  setSelectedTotalPrice: React.Dispatch<React.SetStateAction<number>>;
   cartTotal: number;
   setCartTotal: React.Dispatch<React.SetStateAction<number>>;
   cartItems: CartItem[];
