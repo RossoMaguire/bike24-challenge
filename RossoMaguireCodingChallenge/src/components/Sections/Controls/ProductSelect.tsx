@@ -14,7 +14,7 @@ const ProductSelect: React.FC = () => {
     <Select placeholder='Select a Product'>
       {productData.map((product, index) => (
         <option key={product.id} value={`product-${index}`}>
-          {product.productName}
+          {`${product.productName} || €${product.price.toString()}`}
         </option>
       ))}
     </Select>
