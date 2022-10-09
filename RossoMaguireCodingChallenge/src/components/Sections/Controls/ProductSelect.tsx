@@ -25,6 +25,7 @@ const ProductSelect: React.FC = () => {
       placeholder='Select a Product'
       color='black'
       onChange={(e) => handleChange(e.target.value)}
+      defaultValue={undefined}
     >
       {productData.map((product, index) => (
         <option key={`product-${index}`} value={product.id}>

@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const cartDefaultValues: ICartContext = {
-  selectedProduct: {} as Product,
+  selectedProduct: undefined as unknown as Product,
   setSelectedProduct: () => {},
-  selectedAmount: 1,
+  selectedAmount: 0,
   setSelectedAmount: () => {},
-  selectedMaxAmount: 0,
+  selectedMaxAmount: 1,
   setSelectedMaxAmount: () => {},
   selectedTotalPrice: 0,
   setSelectedTotalPrice: () => {},
@@ -26,23 +26,30 @@ export function useCartContext() {
 
 export function CartProvider({ children }: ICartContextProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product>(
-    {} as Product
+    undefined as unknown as Product
   );
-  const [selectedAmount, setSelectedAmount] = useState<number>(1);
-  const [selectedMaxAmount, setSelectedMaxAmount] = useState<number>(0);
+  const [selectedAmount, setSelectedAmount] = useState<number>(0);
+  const [selectedMaxAmount, setSelectedMaxAmount] = useState<number>(1);
   const [selectedTotalPrice, setSelectedTotalPrice] = useState<number>(0);
   const [cartTotal, setCartTotal] = useState<number>(0);
   const [cartItems, setCartItems] = useState<CartItem[]>([] as CartItem[]);
   const [cartCount, setCartCount] = useState<number>(0);
 
   useEffect(() => {
-    const newTotalPrice = selectedProduct.price * selectedAmount;
-    setSelectedTotalPrice(newTotalPrice);
+    if (selectedProduct) {
+      const newTotalPrice = selectedProduct.price * selectedAmount!;
+      setSelectedTotalPrice(newTotalPrice);
+    }
   }, [selectedAmount]);
 
   useEffect(() => {
-    setSelectedTotalPrice(selectedProduct.price);
-    setSelectedAmount(1);
+    if (selectedProduct) {
+      setSelectedTotalPrice(selectedProduct.price);
+      setSelectedAmount(1);
+    } else {
+      setSelectedTotalPrice(0);
+      setSelectedAmount(0);
+    }
   }, [selectedProduct]);
 
   const addToCart = async (name: string, price: number) => {
