@@ -52,7 +52,12 @@ export function CartProvider({ children }: ICartContextProps) {
     }
   }, [selectedProduct]);
 
-  const addToCart = async (name: string, price: number) => {
+  const addToCart = async (
+    name: string,
+    totalPrice: number,
+    unitPrice: number,
+    amount: number
+  ) => {
     setCartCount(cartCount + 1);
     setCartItems((prevState) => {
       const isItemInCart = prevState.find((item) => item.productName === name);
@@ -62,9 +67,8 @@ export function CartProvider({ children }: ICartContextProps) {
           item.productName === name
             ? {
                 ...item,
-                amount: item.amount + 1,
-                price: item.unitPrice,
-                totalPrice: item.totalPrice + item.unitPrice,
+                amount: item.amount + amount,
+                totalPrice: item.totalPrice + totalPrice,
               }
             : item
         );
@@ -72,11 +76,11 @@ export function CartProvider({ children }: ICartContextProps) {
 
       return [
         ...prevState,
-        { productName: name, unitPrice: price, amount: 1, totalPrice: price },
+        { productName: name, amount, unitPrice, totalPrice },
       ];
     });
     setCartTotal((prevState: number) => {
-      return prevState + price;
+      return prevState + totalPrice;
     });
   };
 
