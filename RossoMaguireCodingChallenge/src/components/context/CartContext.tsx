@@ -67,8 +67,8 @@ export function CartProvider({ children }: ICartContextProps) {
           item.productName === name
             ? {
                 ...item,
-                amount: item.amount + amount,
-                totalPrice: item.totalPrice + totalPrice,
+                amount,
+                totalPrice,
               }
             : item
         );
