@@ -7,6 +7,7 @@ import {
   Th,
   Thead,
   Tr,
+  Td,
 } from '@chakra-ui/react';
 import { useCartContext } from '../../context/CartContext';
 import OrdersItem from './OrdersItem';
@@ -19,7 +20,7 @@ const OrdersTable: React.FC = () => {
       <Table variant='simple' color='black'>
         <Thead>
           <Tr>
-            <Th>#</Th>
+            <Th># Max 10</Th>
             <Th>Product Name</Th>
             <Th isNumeric>Unit Price</Th>
             <Th isNumeric>Amount</Th>
@@ -28,16 +29,22 @@ const OrdersTable: React.FC = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {cartItems.map((item, index) => (
-            <OrdersItem
-              index={index + 1}
-              productName={item.productName}
-              unitPrice={item.unitPrice}
-              amount={item.amount}
-              totalPrice={item.totalPrice}
-              key={item.productName}
-            />
-          ))}
+          {cartItems.length > 0 ? (
+            cartItems.map((item, index) => (
+              <OrdersItem
+                index={index + 1}
+                productName={item.productName}
+                unitPrice={item.unitPrice}
+                amount={item.amount}
+                totalPrice={item.totalPrice}
+                key={item.productName}
+              />
+            ))
+          ) : (
+            <Tr>
+              <Td>You can add a maximum of 10 line items here.</Td>
+            </Tr>
+          )}
         </Tbody>
       </Table>
     </TableContainer>

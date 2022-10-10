@@ -25,7 +25,7 @@ const Checkout: React.FC = () => {
         <Spacer />
         <Box p='2'>
           <Heading size='md' color='black'>
-            {`Order Total: €${cartTotal.toLocaleString('en-US')}`}
+            {`Cart Total: €${cartTotal.toLocaleString('en-US')}`}
           </Heading>
         </Box>
       </Flex>
