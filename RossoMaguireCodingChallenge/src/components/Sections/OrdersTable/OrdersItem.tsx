@@ -12,9 +12,9 @@ const OrdersItem: React.FC<IOrdersItemProps> = ({
   return (
     <Tr>
       <Td>{productName}</Td>
-      <Td isNumeric>{unitPrice}</Td>
+      <Td isNumeric>{`€${unitPrice}`}</Td>
       <Td isNumeric>{amount}</Td>
-      <Td isNumeric>{totalPrice}</Td>
+      <Td isNumeric>{`€${totalPrice}`}</Td>
     </Tr>
   );
 };

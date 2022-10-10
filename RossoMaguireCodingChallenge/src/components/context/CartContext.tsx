@@ -38,13 +38,13 @@ export function CartProvider({ children }: ICartContextProps) {
   useEffect(() => {
     if (selectedProduct) {
       const newTotalPrice = selectedProduct.price * selectedAmount!;
-      setSelectedTotalPrice(newTotalPrice);
+      setSelectedTotalPrice(parseFloat(newTotalPrice.toFixed(2)));
     }
   }, [selectedAmount]);
 
   useEffect(() => {
     if (selectedProduct) {
-      setSelectedTotalPrice(selectedProduct.price);
+      setSelectedTotalPrice(parseFloat(selectedProduct.price.toFixed(2)));
       setSelectedAmount(1);
     } else {
       setSelectedTotalPrice(0);

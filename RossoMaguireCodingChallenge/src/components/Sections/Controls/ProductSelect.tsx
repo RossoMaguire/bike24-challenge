@@ -29,7 +29,9 @@ const ProductSelect: React.FC = () => {
     >
       {productData.map((product, index) => (
         <option key={`product-${index}`} value={product.id}>
-          {`${product.productName} || €${product.price.toString()}`}
+          {`${product.productName} || €${product.price.toLocaleString(
+            'en-US'
+          )}`}
         </option>
       ))}
     </Select>

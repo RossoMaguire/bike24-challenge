@@ -63,7 +63,7 @@ const SliderAmount: React.FC = () => {
         fontSize='md'
         color='black'
         display={selectedProduct ? 'block' : 'none'}
-      >{`X ${selectedProduct?.price} = ${selectedTotalPrice}`}</Text>
+      >{`Price: €${selectedTotalPrice.toLocaleString('en-US')}`}</Text>
       <Text
         fontSize='md'
         color='red'
