@@ -3,11 +3,21 @@ import { Flex, Box, Spacer, Button, Heading } from '@chakra-ui/react';
 import { useCartContext } from '../../context/CartContext';
 
 const Checkout: React.FC = () => {
-  const { cartTotal } = useCartContext();
+  const { cartTotal, setCartItems, setCartTotal } = useCartContext();
+
+  const clearCart = () => {
+    setCartItems([]);
+    setCartTotal(0);
+  };
 
   return (
     <>
-      <Flex>
+      <Flex borderTop='1px' borderTopColor='gray.200'>
+        <Box p='4'>
+          <Button colorScheme='red' onClick={clearCart}>
+            Clear Cart
+          </Button>
+        </Box>
         <Spacer />
         <Box p='2'>
           <Heading size='md' color='black'>
@@ -16,9 +26,6 @@ const Checkout: React.FC = () => {
         </Box>
       </Flex>
       <Flex>
-        <Box p='4'>
-          <Button colorScheme='red'>Clear Cart</Button>
-        </Box>
         <Spacer />
         <Box p='4'>
           <Button colorScheme='green'>Buy</Button>
