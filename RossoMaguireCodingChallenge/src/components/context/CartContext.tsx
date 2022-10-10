@@ -15,6 +15,7 @@ const cartDefaultValues: ICartContext = {
   setCartItems: () => [],
   addToCart: () => {},
   removeFromCart: () => {},
+  maxOrderReached: false,
 };
 
 export const CartItemsContext = createContext<ICartContext>(cartDefaultValues);
@@ -32,6 +33,7 @@ export function CartProvider({ children }: ICartContextProps) {
   const [selectedTotalPrice, setSelectedTotalPrice] = useState<number>(0);
   const [cartTotal, setCartTotal] = useState<number>(0);
   const [cartItems, setCartItems] = useState<CartItem[]>([] as CartItem[]);
+  const [maxOrderReached, setMaxOrderReached] = useState<boolean>(false);
 
   useEffect(() => {
     const newTotalPrice = selectedProduct?.price * selectedAmount!;
@@ -77,6 +79,11 @@ export function CartProvider({ children }: ICartContextProps) {
         );
       }
 
+      if (cartItems.length === 10) {
+        setMaxOrderReached(true);
+        return [...prevState];
+      }
+
       return [
         ...prevState,
         { productName: name, amount, unitPrice, totalPrice },
@@ -85,6 +92,10 @@ export function CartProvider({ children }: ICartContextProps) {
   };
 
   const removeFromCart = async (name: string) => {
+    if (cartItems.length === 10) {
+      setMaxOrderReached(false);
+    }
+
     setCartItems((prevState) => {
       return prevState.filter((item) => item.productName !== name);
     });
@@ -105,6 +116,7 @@ export function CartProvider({ children }: ICartContextProps) {
     setCartItems,
     addToCart,
     removeFromCart,
+    maxOrderReached,
   };
 
   return (

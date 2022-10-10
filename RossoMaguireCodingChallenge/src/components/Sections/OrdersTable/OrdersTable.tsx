@@ -19,16 +19,18 @@ const OrdersTable: React.FC = () => {
       <Table variant='simple' color='black'>
         <Thead>
           <Tr>
+            <Th>#</Th>
             <Th>Product Name</Th>
             <Th isNumeric>Unit Price</Th>
             <Th isNumeric>Amount</Th>
             <Th isNumeric>Price</Th>
-            <Th textAlign='end'>{cartItems.length > 0 && `Remove`}</Th>
+            {cartItems.length > 0 && <Th textAlign='end'>Remove</Th>}
           </Tr>
         </Thead>
         <Tbody>
-          {cartItems.map((item) => (
+          {cartItems.map((item, index) => (
             <OrdersItem
+              index={index + 1}
               productName={item.productName}
               unitPrice={item.unitPrice}
               amount={item.amount}

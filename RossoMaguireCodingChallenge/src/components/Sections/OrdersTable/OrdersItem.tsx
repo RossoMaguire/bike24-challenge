@@ -3,9 +3,12 @@ import { Tr, Td } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 import { useCartContext } from '../../context/CartContext';
 
-interface IOrdersItemProps extends CartItem {}
+interface IOrdersItemProps extends CartItem {
+  index: number;
+}
 
 const OrdersItem: React.FC<IOrdersItemProps> = ({
+  index,
   productName,
   unitPrice,
   amount,
@@ -15,7 +18,8 @@ const OrdersItem: React.FC<IOrdersItemProps> = ({
 
   return (
     <Tr>
-      <Td>{productName}</Td>
+      <Td>{index}</Td>
+      <Td fontWeight='bold'>{productName}</Td>
       <Td isNumeric>{`€${unitPrice}`}</Td>
       <Td isNumeric>{amount}</Td>
       <Td isNumeric>{`€${totalPrice}`}</Td>

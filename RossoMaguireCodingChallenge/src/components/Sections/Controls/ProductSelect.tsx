@@ -26,6 +26,7 @@ const ProductSelect: React.FC = () => {
       color='black'
       onChange={(e) => handleChange(e.target.value)}
       defaultValue={undefined}
+      fontWeight='bold'
     >
       {productData.map((product, index) => (
         <option key={`product-${index}`} value={product.id}>

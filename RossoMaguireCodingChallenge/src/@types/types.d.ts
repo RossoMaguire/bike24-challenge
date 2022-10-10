@@ -33,6 +33,7 @@ interface ICartContext {
     amount: number
   ) => void;
   removeFromCart: (name: string) => void;
+  maxOrderReached: boolean;
 }
 
 interface ICartContextProps {
