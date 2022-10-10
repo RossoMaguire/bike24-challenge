@@ -1,27 +1,21 @@
 import React from 'react';
-import { GridItem, Text } from '@chakra-ui/react';
+import { Tr, Td } from '@chakra-ui/react';
 
-const OrdersItem: React.FC<CartItem> = ({
+interface IOrdersItemProps extends CartItem {}
+
+const OrdersItem: React.FC<IOrdersItemProps> = ({
   productName,
   unitPrice,
   amount,
   totalPrice,
-}: CartItem) => {
+}: IOrdersItemProps) => {
   return (
-    <>
-      <GridItem colSpan={2} h='10'>
-        <Text color='black'>{productName}</Text>
-      </GridItem>
-      <GridItem colSpan={1} h='10'>
-        <Text color='black'>{unitPrice}</Text>
-      </GridItem>
-      <GridItem colSpan={1} h='10'>
-        <Text color='black'>{amount}</Text>
-      </GridItem>
-      <GridItem colSpan={1} h='10'>
-        <Text color='black'>{totalPrice}</Text>
-      </GridItem>
-    </>
+    <Tr>
+      <Td>{productName}</Td>
+      <Td isNumeric>{unitPrice}</Td>
+      <Td isNumeric>{amount}</Td>
+      <Td isNumeric>{totalPrice}</Td>
+    </Tr>
   );
 };
 

@@ -1,5 +1,13 @@
 import React from 'react';
-import { Grid, GridItem, Text } from '@chakra-ui/react';
+import {
+  Table,
+  TableCaption,
+  TableContainer,
+  Tbody,
+  Th,
+  Thead,
+  Tr,
+} from '@chakra-ui/react';
 import { useCartContext } from '../../context/CartContext';
 import OrdersItem from './OrdersItem';
 
@@ -7,28 +15,29 @@ const OrdersTable: React.FC = () => {
   const { cartItems } = useCartContext();
 
   return (
-    <Grid templateColumns='repeat(5, 1fr)' gap={4} py={20}>
-      <GridItem colSpan={2} h='10'>
-        <Text color='black'>Product Name</Text>
-      </GridItem>
-      <GridItem colSpan={1} h='10'>
-        <Text color='black'>Unit Price</Text>
-      </GridItem>
-      <GridItem colSpan={1} h='10'>
-        <Text color='black'>Amount</Text>
-      </GridItem>
-      <GridItem colSpan={1} h='10'>
-        <Text color='black'>Price</Text>
-      </GridItem>
-      {cartItems.map((item) => (
-        <OrdersItem
-          productName={item.productName}
-          unitPrice={item.unitPrice}
-          amount={item.amount}
-          totalPrice={item.totalPrice}
-        />
-      ))}
-    </Grid>
+    <TableContainer py={20}>
+      <Table variant='simple' color='black'>
+        <Thead>
+          <Tr>
+            <Th>Product Name</Th>
+            <Th isNumeric>Unit Price</Th>
+            <Th isNumeric>Amount</Th>
+            <Th isNumeric>Price</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {cartItems.map((item) => (
+            <OrdersItem
+              productName={item.productName}
+              unitPrice={item.unitPrice}
+              amount={item.amount}
+              totalPrice={item.totalPrice}
+              key={item.productName}
+            />
+          ))}
+        </Tbody>
+      </Table>
+    </TableContainer>
   );
 };
 
