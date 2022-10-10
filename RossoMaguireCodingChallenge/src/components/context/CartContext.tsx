@@ -36,10 +36,8 @@ export function CartProvider({ children }: ICartContextProps) {
   const [cartCount, setCartCount] = useState<number>(0);
 
   useEffect(() => {
-    if (selectedProduct) {
-      const newTotalPrice = selectedProduct.price * selectedAmount!;
-      setSelectedTotalPrice(parseFloat(newTotalPrice.toFixed(2)));
-    }
+    const newTotalPrice = selectedProduct?.price * selectedAmount!;
+    setSelectedTotalPrice(parseFloat(newTotalPrice.toFixed(2)));
   }, [selectedAmount]);
 
   useEffect(() => {
@@ -51,6 +49,14 @@ export function CartProvider({ children }: ICartContextProps) {
       setSelectedAmount(0);
     }
   }, [selectedProduct]);
+
+  useEffect(() => {
+    setCartTotal(() => {
+      const prices = cartItems?.map((item) => item.totalPrice);
+      const sum = prices.reduce((prev, current) => prev + current, 0);
+      return sum;
+    });
+  }, [cartItems]);
 
   const addToCart = async (
     name: string,
@@ -78,9 +84,6 @@ export function CartProvider({ children }: ICartContextProps) {
         ...prevState,
         { productName: name, amount, unitPrice, totalPrice },
       ];
-    });
-    setCartTotal((prevState: number) => {
-      return prevState + totalPrice;
     });
   };
 
