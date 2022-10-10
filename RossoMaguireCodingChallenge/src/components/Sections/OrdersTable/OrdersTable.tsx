@@ -23,6 +23,7 @@ const OrdersTable: React.FC = () => {
             <Th isNumeric>Unit Price</Th>
             <Th isNumeric>Amount</Th>
             <Th isNumeric>Price</Th>
+            <Th textAlign='end'>{cartItems.length > 0 && `Remove`}</Th>
           </Tr>
         </Thead>
         <Tbody>

@@ -13,9 +13,8 @@ const cartDefaultValues: ICartContext = {
   setCartTotal: () => {},
   cartItems: [],
   setCartItems: () => [],
-  cartCount: 0,
-  setCartCount: () => {},
   addToCart: () => {},
+  removeFromCart: () => {},
 };
 
 export const CartItemsContext = createContext<ICartContext>(cartDefaultValues);
@@ -33,7 +32,6 @@ export function CartProvider({ children }: ICartContextProps) {
   const [selectedTotalPrice, setSelectedTotalPrice] = useState<number>(0);
   const [cartTotal, setCartTotal] = useState<number>(0);
   const [cartItems, setCartItems] = useState<CartItem[]>([] as CartItem[]);
-  const [cartCount, setCartCount] = useState<number>(0);
 
   useEffect(() => {
     const newTotalPrice = selectedProduct?.price * selectedAmount!;
@@ -64,7 +62,6 @@ export function CartProvider({ children }: ICartContextProps) {
     unitPrice: number,
     amount: number
   ) => {
-    setCartCount(cartCount + 1);
     setCartItems((prevState) => {
       const isItemInCart = prevState.find((item) => item.productName === name);
 
@@ -87,6 +84,12 @@ export function CartProvider({ children }: ICartContextProps) {
     });
   };
 
+  const removeFromCart = async (name: string) => {
+    setCartItems((prevState) => {
+      return prevState.filter((item) => item.productName !== name);
+    });
+  };
+
   const value = {
     selectedProduct,
     setSelectedProduct,
@@ -100,9 +103,8 @@ export function CartProvider({ children }: ICartContextProps) {
     setCartTotal,
     cartItems,
     setCartItems,
-    cartCount,
-    setCartCount,
     addToCart,
+    removeFromCart,
   };
 
   return (

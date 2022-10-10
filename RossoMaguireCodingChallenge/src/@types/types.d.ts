@@ -26,14 +26,13 @@ interface ICartContext {
   setCartTotal: React.Dispatch<React.SetStateAction<number>>;
   cartItems: CartItem[];
   setCartItems: React.Dispatch<React.SetStateAction<T>>;
-  cartCount: number;
-  setCartCount: React.Dispatch<React.SetStateAction<number>>;
   addToCart: (
     name: string,
     totalPrice: number,
     unitPrice: number,
     amount: number
   ) => void;
+  removeFromCart: (name: string) => void;
 }
 
 interface ICartContextProps {
