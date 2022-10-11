@@ -1,9 +1,19 @@
 import React from 'react';
-import { Flex, Box, Spacer, Button, Heading } from '@chakra-ui/react';
-import { CartItemsContext, useCartContext } from '../../context/CartContext';
+import {
+  Flex,
+  Box,
+  Spacer,
+  Button,
+  Heading,
+  useDisclosure,
+} from '@chakra-ui/react';
+import ConfirmationModal from './ConfirmationModal';
+import { useCartContext } from '../../context/CartContext';
 
 const Checkout: React.FC = () => {
   const { cartItems, cartTotal, setCartItems, setCartTotal } = useCartContext();
+
+  const { onOpen, isOpen, onClose } = useDisclosure();
 
   const clearCart = () => {
     setCartItems([]);
@@ -35,10 +45,12 @@ const Checkout: React.FC = () => {
           <Button
             colorScheme='green'
             display={cartItems.length > 0 ? 'block' : 'none'}
+            onClick={onOpen}
           >
             Buy
           </Button>
         </Box>
+        <ConfirmationModal isOpen={isOpen} onClose={onClose} />
       </Flex>
     </>
   );

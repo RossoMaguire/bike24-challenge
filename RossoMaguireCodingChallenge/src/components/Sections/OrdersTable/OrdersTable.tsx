@@ -37,7 +37,7 @@ const OrdersTable: React.FC = () => {
                 unitPrice={item.unitPrice}
                 amount={item.amount}
                 totalPrice={item.totalPrice}
-                key={item.productName}
+                key={`order-line-item-${index + 1}`}
               />
             ))
           ) : (
