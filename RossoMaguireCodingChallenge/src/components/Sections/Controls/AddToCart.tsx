@@ -21,7 +21,7 @@ const AddToCart: React.FC = () => {
       <Button
         colorScheme='blue'
         onClick={handleClick}
-        isDisabled={selectedProduct === undefined}
+        isDisabled={selectedProduct.productName === ''}
       >
         Add to Cart
       </Button>
