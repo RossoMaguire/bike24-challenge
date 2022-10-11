@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 const cartDefaultValues: ICartContext = {
   selectedProduct: {
@@ -67,40 +73,41 @@ export function CartProvider({ children }: ICartContextProps) {
     });
   }, [cartItems]);
 
-  const addToCart = async (
-    name: string,
-    totalPrice: number,
-    unitPrice: number,
-    amount: number
-  ) => {
-    setCartItems((prevState) => {
-      const isItemInCart = prevState.find((item) => item.productName === name);
+  const addToCart = useMemo(
+    () =>
+      (name: string, totalPrice: number, unitPrice: number, amount: number) => {
+        setCartItems((prevState) => {
+          const isItemInCart = prevState.find(
+            (item) => item.productName === name
+          );
 
-      if (isItemInCart) {
-        return prevState.map((item) =>
-          item.productName === name
-            ? {
-                ...item,
-                amount,
-                totalPrice,
-              }
-            : item
-        );
-      }
+          if (isItemInCart) {
+            return prevState.map((item) =>
+              item.productName === name
+                ? {
+                    ...item,
+                    amount,
+                    totalPrice,
+                  }
+                : item
+            );
+          }
 
-      if (cartItems.length === 10) {
-        setMaxOrderReached(true);
-        return [...prevState];
-      }
+          if (cartItems.length === 10) {
+            setMaxOrderReached(true);
+            return [...prevState];
+          }
 
-      return [
-        ...prevState,
-        { productName: name, amount, unitPrice, totalPrice },
-      ];
-    });
-  };
+          return [
+            ...prevState,
+            { productName: name, amount, unitPrice, totalPrice },
+          ];
+        });
+      },
+    []
+  );
 
-  const removeFromCart = async (name: string) => {
+  const removeFromCart = (name: string) => {
     if (cartItems.length === 10) {
       setMaxOrderReached(false);
     }
