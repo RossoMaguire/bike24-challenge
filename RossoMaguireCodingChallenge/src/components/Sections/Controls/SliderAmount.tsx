@@ -23,7 +23,7 @@ const SliderAmount: React.FC = () => {
     selectedTotalPrice,
   } = useCartContext();
 
-  const handleChange = (amount: any) => {
+  const handleChange = (amount: number) => {
     if (amount === selectedProduct?.maxAmount) {
       setShowMaxAmountMessage(true);
     } else if (showMaxAmountMessage) {
@@ -39,23 +39,18 @@ const SliderAmount: React.FC = () => {
         <Slider
           flex='1'
           focusThumbOnChange={false}
-          value={selectedAmount as number}
+          value={selectedAmount}
           onChange={handleChange}
-          min={selectedProduct && 1}
+          min={selectedProduct.id === 'none' ? 0 : 1}
           max={selectedMaxAmount}
-          isDisabled={selectedProduct === undefined}
+          isDisabled={selectedProduct.id === 'none'}
         >
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
-          <SliderThumb fontSize='sm' boxSize='32px' children={selectedAmount} />
+          <SliderThumb fontSize='sm' boxSize='32px' />
         </Slider>
-        <NumberInput
-          maxW='100px'
-          mr='2rem'
-          value={selectedAmount as number}
-          onChange={handleChange}
-        >
+        <NumberInput maxW='100px' mr='2rem' value={selectedAmount?.toString()}>
           <NumberInputField color='black' readOnly />
         </NumberInput>
       </Flex>

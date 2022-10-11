@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import React, { useState, useEffect } from 'react';
 import { Select } from '@chakra-ui/react';
 import { useCartContext } from '../../context/CartContext';
+
 const ProductSelect: React.FC = () => {
   const [productData, setProductData] = useState<Product[]>([]);
 
@@ -15,9 +17,15 @@ const ProductSelect: React.FC = () => {
   const handleChange = (productId: string) => {
     const productSelected = productData.find(
       (product) => product.id === productId
-    );
-    setSelectedProduct(productSelected!);
-    setSelectedMaxAmount(productSelected!.maxAmount);
+    ) || {
+      id: 'none',
+      productName: '',
+      maxAmount: 0,
+      taxRate: 0,
+      price: 0,
+    };
+    setSelectedProduct(productSelected);
+    setSelectedMaxAmount(productSelected.maxAmount);
   };
 
   return (
@@ -25,7 +33,7 @@ const ProductSelect: React.FC = () => {
       placeholder='Select a Product'
       color='black'
       onChange={(e) => handleChange(e.target.value)}
-      defaultValue={undefined}
+      defaultValue={'none'}
       fontWeight='bold'
     >
       {productData.map((product, index) => (

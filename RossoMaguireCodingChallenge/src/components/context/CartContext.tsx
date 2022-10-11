@@ -1,11 +1,19 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-empty-function */
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const cartDefaultValues: ICartContext = {
-  selectedProduct: undefined as unknown as Product,
+  selectedProduct: {
+    id: 'none',
+    productName: '',
+    maxAmount: 0,
+    taxRate: 0,
+    price: 0,
+  },
   setSelectedProduct: () => {},
   selectedAmount: 0,
   setSelectedAmount: () => {},
-  selectedMaxAmount: 1,
+  selectedMaxAmount: 0,
   setSelectedMaxAmount: () => {},
   selectedTotalPrice: 0,
   setSelectedTotalPrice: () => {},
@@ -25,9 +33,13 @@ export function useCartContext() {
 }
 
 export function CartProvider({ children }: ICartContextProps) {
-  const [selectedProduct, setSelectedProduct] = useState<Product>(
-    undefined as unknown as Product
-  );
+  const [selectedProduct, setSelectedProduct] = useState<Product>({
+    id: 'none',
+    productName: '',
+    maxAmount: 0,
+    taxRate: 0,
+    price: 0,
+  });
   const [selectedAmount, setSelectedAmount] = useState<number>(0);
   const [selectedMaxAmount, setSelectedMaxAmount] = useState<number>(1);
   const [selectedTotalPrice, setSelectedTotalPrice] = useState<number>(0);
@@ -36,18 +48,15 @@ export function CartProvider({ children }: ICartContextProps) {
   const [maxOrderReached, setMaxOrderReached] = useState<boolean>(false);
 
   useEffect(() => {
-    const newTotalPrice = selectedProduct?.price * selectedAmount!;
+    const newTotalPrice = selectedProduct.price * selectedAmount!;
     setSelectedTotalPrice(parseFloat(newTotalPrice.toFixed(2)));
   }, [selectedAmount]);
 
   useEffect(() => {
-    if (selectedProduct) {
-      setSelectedTotalPrice(parseFloat(selectedProduct.price.toFixed(2)));
-      setSelectedAmount(1);
-    } else {
-      setSelectedTotalPrice(0);
-      setSelectedAmount(0);
-    }
+    setSelectedTotalPrice(parseFloat(selectedProduct.price.toFixed(2)));
+    setSelectedAmount(() => {
+      return selectedProduct.id === 'none' ? 0 : 1;
+    });
   }, [selectedProduct]);
 
   useEffect(() => {

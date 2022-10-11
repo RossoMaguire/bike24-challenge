@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from '@chakra-ui/react';
 import { Checkout, Controls, OrdersTable } from './components/Sections';
 import Header from './components/Header';
