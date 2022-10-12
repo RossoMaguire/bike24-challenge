@@ -18,7 +18,7 @@ To run tests:
 - Used ES Lint for linting errors and code review
 - React testing library & jest for basic tests
 
-### Design choices:
+### Design choices
 
 - Added Chakra UI
 
@@ -32,7 +32,7 @@ To run tests:
 
 - Using Context to share data between components
 
-### Optimizations:
+### Optimizations
 
 - useMemo on functions that don't need re-rendering
 
