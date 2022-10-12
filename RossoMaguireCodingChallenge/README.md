@@ -12,7 +12,7 @@ To run tests:
 
 ### Tooling
 
-- Initialized new React TypeScript poject using Vite
+- Initialized new React TypeScript project using Vite
 
 - Used ES Lint for linting errors and code review
 
