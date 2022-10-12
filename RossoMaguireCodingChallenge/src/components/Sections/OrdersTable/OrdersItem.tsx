@@ -17,7 +17,7 @@ const OrdersItem: React.FC<IOrdersItemProps> = ({
   const { removeFromCart } = useCartContext();
 
   return (
-    <Tr>
+    <Tr data-testid='order-item'>
       <Td>{index}</Td>
       <Td fontWeight='bold'>{productName}</Td>
       <Td isNumeric>{`€${unitPrice}`}</Td>

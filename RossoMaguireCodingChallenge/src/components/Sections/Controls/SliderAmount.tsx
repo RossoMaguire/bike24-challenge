@@ -44,6 +44,7 @@ const SliderAmount: React.FC = () => {
           min={selectedProduct.id === 'none' ? 0 : 1}
           max={selectedMaxAmount}
           isDisabled={selectedProduct.id === 'none'}
+          data-testid='slider-amount'
         >
           <SliderTrack>
             <SliderFilledTrack />

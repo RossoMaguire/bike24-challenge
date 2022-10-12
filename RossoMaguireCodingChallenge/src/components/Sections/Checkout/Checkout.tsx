@@ -46,6 +46,7 @@ const Checkout: React.FC = () => {
             colorScheme='green'
             display={cartItems.length > 0 ? 'block' : 'none'}
             onClick={onOpen}
+            data-testid='buy-button'
           >
             Buy
           </Button>

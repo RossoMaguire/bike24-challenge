@@ -38,9 +38,14 @@ const ProductSelect: React.FC = () => {
       onChange={(e) => handleChange(e.target.value)}
       defaultValue={'none'}
       fontWeight='bold'
+      data-testid='product-select'
     >
       {productData.map((product, index) => (
-        <option key={`product-${index}`} value={product.id}>
+        <option
+          key={`product-${index}`}
+          value={product.id}
+          data-testid='product-select-item'
+        >
           {`${product.productName} || €${product.price.toLocaleString(
             'en-US'
           )}`}

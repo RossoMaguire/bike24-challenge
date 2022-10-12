@@ -90,7 +90,12 @@ const ConfirmationModal: React.FC<IConfirmationModalProps> = ({
 
         <ModalFooter>
           {!orderConfirmed && (
-            <Button colorScheme='blue' m='auto' onClick={handleClick}>
+            <Button
+              colorScheme='blue'
+              m='auto'
+              onClick={handleClick}
+              data-testid='confirm-button'
+            >
               Confirm Order
             </Button>
           )}
