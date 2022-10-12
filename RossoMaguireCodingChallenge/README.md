@@ -9,8 +9,6 @@ To run tests:
 
 - `npm test`
 
-&nbsp;
-&nbsp;
 
 ### Tooling
 
