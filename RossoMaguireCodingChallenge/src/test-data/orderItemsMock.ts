@@ -1,21 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import { cartDefaultValues } from '../components/context/CartContext';
+
 const orderItemsMock = {
-  selectedProduct: {
-    id: 'none',
-    productName: '',
-    maxAmount: 0,
-    taxRate: 0,
-    price: 0,
-  },
-  setSelectedProduct: () => {},
-  selectedAmount: 0,
-  setSelectedAmount: () => {},
-  selectedMaxAmount: 0,
-  setSelectedMaxAmount: () => {},
-  selectedTotalPrice: 0,
-  setSelectedTotalPrice: () => {},
-  cartTotal: 0,
-  setCartTotal: () => {},
+  ...cartDefaultValues,
   cartItems: [
     {
       productName: 'A random product',
@@ -30,10 +17,6 @@ const orderItemsMock = {
       totalPrice: 4,
     },
   ],
-  setCartItems: () => [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-  maxOrderReached: false,
 };
 
 export default orderItemsMock;

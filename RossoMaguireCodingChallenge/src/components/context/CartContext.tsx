@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 
-const cartDefaultValues: ICartContext = {
+export const cartDefaultValues: ICartContext = {
   selectedProduct: {
     id: 'none',
     productName: '',

@@ -9,7 +9,6 @@ To run tests:
 
 - `npm test`
 
-
 ### Tooling
 
 - Initialized new React TypeScript project using Vite
@@ -53,3 +52,5 @@ To run tests:
 - Helper lib for cart functions to separate concerns
 
 - Add more tests, solve some known bugs with slider and catch more edge cases
+
+- Would improve tests not use as much of `data-testid`

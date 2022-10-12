@@ -22,6 +22,7 @@ const AddToCart: React.FC = () => {
         colorScheme='blue'
         onClick={handleClick}
         isDisabled={selectedProduct.productName === ''}
+        data-testid='add-to-cart-button'
       >
         Add to Cart
       </Button>

@@ -85,6 +85,7 @@ const ConfirmationModal: React.FC<IConfirmationModalProps> = ({
           <Text
             pt={orderConfirmed ? 5 : 0}
             fontWeight='bold'
+            data-testid='order-total-confirmation'
           >{`Order Total: €${cartTotal.toLocaleString('en-US')}`}</Text>
         </ModalBody>
 

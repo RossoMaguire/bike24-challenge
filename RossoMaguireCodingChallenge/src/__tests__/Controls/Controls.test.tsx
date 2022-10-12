@@ -1,8 +1,15 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { screen, render, waitFor, fireEvent } from '@testing-library/react';
+import {
+  act,
+  screen,
+  render,
+  waitFor,
+  fireEvent,
+} from '@testing-library/react';
 import productsMock from '../../test-data/productsMock';
 import Controls from '../../components/Sections/Controls';
+import { CartProvider } from '../../components/context/CartContext';
 
 describe('Product Select Controls', () => {
   it('Populates the dropdown correctly after products are fetched', async () => {
@@ -24,29 +31,25 @@ describe('Product Select Controls', () => {
     const mockedFetch = jest.fn().mockResolvedValueOnce(mockedRes);
     global.fetch = mockedFetch;
 
-    render(<Controls />);
+    render(
+      <CartProvider>
+        <Controls />
+      </CartProvider>
+    );
 
     await waitFor(() => screen.getAllByTestId('product-select-item'));
     await waitFor(() => screen.getByText('Add to Cart').closest('button'));
 
     // Is disabled by default
     expect(screen.getByText('Add to Cart').closest('button')).toBeDisabled();
-    expect(
-      screen.getByTestId('slider-amount').getAttribute('aria-disabled')
-    ).toBe('true');
 
-    fireEvent.change(screen.getByTestId('product-select'), {
-      target: { value: '3ab4c6bc-8920-11ec-a5e9-939419c56813' },
+    act(() => {
+      fireEvent.change(screen.getByTestId('product-select'), {
+        target: { value: '3ab4c6bc-8920-11ec-a5e9-939419c56813' },
+      });
     });
 
     // Is enabled now
-    expect(
-      screen
-        .getByText('Add to Cart')
-        .closest('button')
-        ?.getAttribute('disabled')
-    ).toBe('');
-
-    expect(screen.getByTestId('slider-amount')).toBeEnabled();
+    expect(screen.getByText('Add to Cart').closest('button')).toBeEnabled();
   });
 });
