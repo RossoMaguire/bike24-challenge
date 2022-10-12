@@ -53,4 +53,4 @@ To run tests:
 
 - Add more tests, solve some known bugs with slider and catch more edge cases
 
-- Would improve tests not use as much of `data-testid`
+- Would improve tests & not use as much of `data-testid`
