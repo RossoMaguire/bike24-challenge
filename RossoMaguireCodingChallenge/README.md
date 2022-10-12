@@ -13,7 +13,9 @@ To run tests:
 ### Tooling
 
 - Initialized new React TypeScript poject using Vite
+
 - Used ES Lint for linting errors and code review
+
 - React testing library & jest for basic tests
 
 ### Design choices
@@ -22,9 +24,9 @@ To run tests:
 
 - Following Atomic Design principles
 
-- Product type added and response types as Product[], fetched products in ProductSelect component
+- Product type added and response types as `Product[]`, fetched products in `ProductSelect` component
 
-- Input is ReadOnly
+- Input is `ReadOnly`
 
 - Adding more of same item to cart overwrites the same line with new amounts
 
@@ -32,9 +34,9 @@ To run tests:
 
 ### Optimizations
 
-- useMemo on functions that don't need re-rendering
+- `useMemo` on functions that don't need re-rendering
 
-### Alternative approaches considered:
+### Alternative approaches considered
 
 - Considered hardcoding 10 rows in the table and adding the items to the line rather than generating the line on Add To Cart click so the user could see in advance the table holds max 10 items
 
