@@ -2,11 +2,11 @@
 
 ## Solution by Ross Maguire
 
-(https://github.com/RossoMaguire/bike24-challenge/blob/main/assets/new_ui_example1.png)
+![ScreenShot](https://raw.github.com/RossoMaguire/bike24-challenge/blob/RossoMaguire/senior-frontend-engineer/assets/new_ui_example1.png)
 <br />
-(https://github.com/RossoMaguire/bike24-challenge/blob/main/assets/new_ui_example2.png)
+![ScreenShot](https://raw.github.com/RossoMaguire/bike24-challenge/blob/RossoMaguire/senior-frontend-engineer/assets/new_ui_example2.png)
 <br />
-(https://github.com/RossoMaguire/bike24-challenge/blob/main/assets/new_ui_example3.png)
+![ScreenShot](https://raw.github.com/RossoMaguire/bike24-challenge/blob/RossoMaguire/senior-frontend-engineer/assets/new_ui_example2.png)
 
 &nbsp;
 &nbsp;
