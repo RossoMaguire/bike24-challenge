@@ -1,10 +1,10 @@
 # Greetings and welcome to the Bike24 Frontend challenge
 
 ## Solution by Ross Maguire
+
 <img width="1685" alt="new_ui_example1" src="https://user-images.githubusercontent.com/48026075/195362383-517a30fa-18a6-41ec-b6ae-44de053b7ffb.png">
 <img width="1679" alt="new_ui_example2" src="https://user-images.githubusercontent.com/48026075/195362390-2ce76ec3-42fb-4d74-b8c5-00f5989b829e.png">
 <img width="1685" alt="new_ui_example3" src="https://user-images.githubusercontent.com/48026075/195362399-1c3b0c31-ba60-43f2-8b91-b7dbb1ea4869.png">
-
 
 &nbsp;
 &nbsp;
@@ -22,6 +22,8 @@ To run it, simply:
 To run tests:
 
 - `npm test`
+
+_note: please have dev server up when running tests to avoid warnings as fetch is not fully mocked_
 
 &nbsp;
 &nbsp;

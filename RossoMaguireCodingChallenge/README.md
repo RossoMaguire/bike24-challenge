@@ -9,6 +9,8 @@ To run tests:
 
 - `npm test`
 
+_note: please have dev server up when running tests to avoid warnings as fetch is not fully mocked_
+
 ### Tooling
 
 - Initialized new React TypeScript project using Vite

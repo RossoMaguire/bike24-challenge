@@ -4,6 +4,12 @@ import { render } from '@testing-library/react';
 import productsMock from '../test-data/productsMock';
 import App from '../App';
 
+// global.fetch = jest.fn(() =>
+//   Promise.resolve({
+//     json: () => Promise.resolve(productsMock),
+//   }),
+// ) as jest.Mock;
+
 test('Renders main page correctly', () => {
   render(<App />);
 
