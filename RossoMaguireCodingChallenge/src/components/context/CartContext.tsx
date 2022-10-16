@@ -93,7 +93,7 @@ export function CartProvider({ children }: ICartContextProps) {
             );
           }
 
-          if (cartItems.length === 10) {
+          if (prevState.length === 10) {
             setMaxOrderReached(true);
             return [...prevState];
           }
